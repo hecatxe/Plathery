@@ -64,7 +64,7 @@ Plathery/
 
 ---
 
-### 🙏 Agradecimientos
+### 💌 Agradecimientos
 
 * A todos los **contribuidores y testers** del proyecto.
 * Comunidades de **desarrollo open source**.
