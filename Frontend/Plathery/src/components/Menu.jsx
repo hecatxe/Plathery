@@ -11,7 +11,8 @@ export default function Menu() {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("http://localhost:3000/logout", {
+      const API = import.meta.env.VITE_API_BACKEND_URL;
+      const res = await fetch(`${API}/logout`, {
         method: "POST",
         credentials: "include",
       });

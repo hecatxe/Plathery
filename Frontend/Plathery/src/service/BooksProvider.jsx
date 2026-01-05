@@ -4,11 +4,12 @@ const BooksContext = createContext();
 
 export const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
+  const API = import.meta.env.VITE_API_BACKEND_URL;
 
   // Carga los favoritos desde el backend al iniciar
   const loadFavorites = async () => {
     try {
-      const res = await fetch("http://localhost:3000/favorites", {
+      const res = await fetch(`${API}/favorites`, {
         credentials: "include", // usa la cookie de sesión
       });
       if (res.ok) {
@@ -23,7 +24,7 @@ export const BooksProvider = ({ children }) => {
   // Añade los libro a favoritos (POST al backend)
   const addBook = async (book) => {
     try {
-      const res = await fetch("http://localhost:3000/favorites", {
+      const res = await fetch(`${API}/favorites`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -54,7 +55,7 @@ export const BooksProvider = ({ children }) => {
   // Actualiza el estado del libro (PATCH al backend)
   const updateStatus = async (id, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:3000/favorites/${id}`, {
+      const res = await fetch(`${API}/favorites/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -71,7 +72,7 @@ export const BooksProvider = ({ children }) => {
     }
   };
   const removeBook = async (id) => {
-    const res = await fetch(`http://localhost:3000/favorites/${id}`, {
+    const res = await fetch(`${API}/favorites/${id}`, {
       method: "DELETE",
       credentials: "include",
     });

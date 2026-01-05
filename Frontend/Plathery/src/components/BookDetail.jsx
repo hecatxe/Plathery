@@ -38,7 +38,8 @@ const BookDetail = () => {
 
     const fetchComments = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/books/${id}/comments`);
+        const API = import.meta.env.VITE_API_BACKEND_URL;
+        const res = await fetch(`${API}/books/${id}/comments`);
         if (res.ok) {
           const data = await res.json();
           setComments(data.comments || []);
@@ -77,7 +78,8 @@ const BookDetail = () => {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:3000/books/${id}/comments`, {
+      const API = import.meta.env.VITE_API_BACKEND_URL;
+      const res = await fetch(`${API}/books/${id}/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -116,8 +118,9 @@ const BookDetail = () => {
     }
 
     try {
+      const API = import.meta.env.VITE_API_BACKEND_URL;
       const res = await fetch(
-        `http://localhost:3000/books/${id}/comments/${commentId}/like`,
+        `${API}/books/${id}/comments/${commentId}/like`,
         { method: "POST", credentials: "include" }
       );
       const data = await res.json();

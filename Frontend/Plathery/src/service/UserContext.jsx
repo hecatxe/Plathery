@@ -9,11 +9,12 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const { setBooks, loadFavorites } = useBooks();
+  const API = import.meta.env.VITE_API_BACKEND_URL;
 
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const res = await fetch("http://localhost:3000/me", {
+        const res = await fetch(`${API}/me`, {
           method: "POST",
           credentials: "include",
         });
@@ -48,7 +49,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch("http://localhost:3000/logout", {
+      await fetch(`${API}/logout`, {
         method: "POST",
         credentials: "include",
       });
