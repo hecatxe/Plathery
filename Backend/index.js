@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://plathery.up.railway.app"],
     credentials: true,
   })
 );
@@ -93,7 +93,17 @@ app.post("/favorites", async (req, res) => {
   }
 
   const userId = decoded.id;
-  const { bookId, title, author, coverImage, year, isbn, synopsis, linkAmazon, status } = req.body;
+  const {
+    bookId,
+    title,
+    author,
+    coverImage,
+    year,
+    isbn,
+    synopsis,
+    linkAmazon,
+    status,
+  } = req.body;
 
   try {
     await db
@@ -101,17 +111,20 @@ app.post("/favorites", async (req, res) => {
       .doc(userId.toString())
       .collection("favorites")
       .doc(bookId)
-      .set({
-        title,
-        author,
-        coverImage,
-        year,
-        isbn,
-        synopsis,
-        linkAmazon,
-        status: status || "Favorito",
-        addedAt: new Date(),
-      }, { merge: true });
+      .set(
+        {
+          title,
+          author,
+          coverImage,
+          year,
+          isbn,
+          synopsis,
+          linkAmazon,
+          status: status || "Favorito",
+          addedAt: new Date(),
+        },
+        { merge: true }
+      );
 
     res.json({ success: true });
   } catch (err) {
@@ -119,7 +132,6 @@ app.post("/favorites", async (req, res) => {
     res.status(500).json({ error: "Error interno" });
   }
 });
-
 
 // Obtener favoritos del usuario
 app.get("/favorites", async (req, res) => {
@@ -377,7 +389,7 @@ app.get("/admin", isAdmin, (req, res) => {
 app.get("/books", async (req, res) => {
   try {
     const snapshot = await db.collection("books").get();
-    const books = snapshot.docs.map(doc => {
+    const books = snapshot.docs.map((doc) => {
       const data = doc.data();
       return {
         id: doc.id,
@@ -389,7 +401,7 @@ app.get("/books", async (req, res) => {
         synopsis: data.synopsis,
         linkAmazon: data.linkAmazon,
         genre: data.genre,
-        createdAt: data.createdAt
+        createdAt: data.createdAt,
       };
     });
     res.json(books);
@@ -398,8 +410,6 @@ app.get("/books", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
-
-
 
 // Obtener un libro por ID (público)
 app.get("/books/:id", async (req, res) => {
