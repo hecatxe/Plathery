@@ -28,10 +28,10 @@ app.listen(PORT, () => {
 
 // Registro de usuario
 app.post("/register", async (req, res) => {
-  const { username, password, role } = req.body;
+  const { username, password } = req.body;
   try {
-    const id = await UserRepository.create(username, password, role);
-    res.send({ id });
+    const id = await UserRepository.create(username, password);
+    res.send({ id, role: "user" });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }

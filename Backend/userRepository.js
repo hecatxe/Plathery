@@ -3,30 +3,28 @@ import bcrypt from "bcrypt";
 
 export class UserRepository {
   static async create(username, password) {
-    Validation.usernameValidation(username);
-    Validation.passwordValidation(password);
+  Validation.usernameValidation(username);
+  Validation.passwordValidation(password);
 
-    // comprobar si ya existe
-    const snapshot = await db
-      .collection("users")
-      .where("username", "==", username)
-      .get();
-    if (!snapshot.empty) throw new Error("El usuario ya existe");
+  const snapshot = await db
+    .collection("users")
+    .where("username", "==", username)
+    .get();
+  if (!snapshot.empty) throw new Error("El usuario ya existe");
 
-    // hashear contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-    // crear documento en Firestore
-    const userRef = db.collection("users").doc();
-    await userRef.set({
-      username,
-      password: hashedPassword,
-      role,
-      createdAt: new Date(),
-    });
+  const userRef = db.collection("users").doc();
+  await userRef.set({
+    username,
+    password: hashedPassword,
+    role: "user",
+    createdAt: new Date(),
+  });
 
-    return userRef.id;
-  }
+  return userRef.id;
+}
+
 
   static async login(username, password) {
     Validation.usernameValidation(username);

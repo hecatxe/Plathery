@@ -57,7 +57,7 @@ const Register = () => {
       const data = await res.json();
 
       if (res.ok) {
-        showModal("success", "Favoritos", "Libro añadido a tus favoritos.");
+        showModal("success", "Registro completado", "Tu cuenta ha sido creada correctamente.");
         await navigate("/login");
       } else {
         showModal(
