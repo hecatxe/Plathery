@@ -3,7 +3,6 @@ import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
 
-// Ruta ABSOLUTA a tu archivo JSON fuera del repo
 const serviceAccount = require("./plathery-service-account.json");
 
 admin.initializeApp({
