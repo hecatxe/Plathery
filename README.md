@@ -5,7 +5,7 @@
 ![CSS](https://img.shields.io/badge/CSS-7.7%25-blue)
 ![Licencia](https://img.shields.io/badge/Licencia-MIT-green)
 
-# 📚 Plathery
+# ˗ˏˋ  ⌞   Plathery  ⌝ ˎˊ˗
 
 Plathery no es solo una plataforma web sobre libros.  
 Es un punto de encuentro. Un lugar tranquilo donde quedarse un rato después de cerrar la última página.
@@ -31,8 +31,7 @@ Todo conectado. Todo accesible.
 ### 🔍 Catálogo de libros dinámico
 Cada libro incluye información completa:
 - Título y portada  
-- Autor/a  
-- Editorial  
+- Autor/a 
 - Año de publicación  
 - ISBN  
 - Género  
@@ -60,7 +59,8 @@ Cada usuario dispone de su propio rincón lector, donde puede organizar libros s
 - Pendiente  
 - Leyendo  
 - Leído  
-- Terminado  
+- Terminado 
+- Favorito
 
 Es como un diario de lectura digital. Ordenado. Siempre a mano.
 
