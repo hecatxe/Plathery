@@ -129,7 +129,7 @@ const Register = () => {
             </label>
           </div>
 
-          <div className="form-group mb-3 position-relative w-100 w-sm-75 w-md-50 mx-auto">
+          <div className="form-group mb-2 position-relative w-100 w-sm-75 w-md-50 mx-auto">
             <input
               type="password"
               id="password"
@@ -142,7 +142,7 @@ const Register = () => {
               Contraseña
             </label>
           </div>
-          <p className="text-muted small py-1">
+          <p className="text-muted small">
             Debe tener mínimo 6 caracteres
           </p>
           <div className="pb-4">
