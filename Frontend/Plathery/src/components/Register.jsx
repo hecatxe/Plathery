@@ -141,6 +141,7 @@ const Register = () => {
             <label htmlFor="password" className="floating-label">
               Contraseña
             </label>
+            <p className="text-muted small py-2">Debe tener mínimo 6 caracteres</p>
           </div>
 
           <div className="pb-4">
