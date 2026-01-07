@@ -57,8 +57,14 @@ const Register = () => {
       const data = await res.json();
 
       if (res.ok) {
-        showModal("success", "Registro completado", "Tu cuenta ha sido creada correctamente.");
-        await navigate("/login");
+        showModal(
+          "success",
+          "Registro completado",
+          "Tu cuenta ha sido creada correctamente."
+        );
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
       } else {
         showModal(
           "error",

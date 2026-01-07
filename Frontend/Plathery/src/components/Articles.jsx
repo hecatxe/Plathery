@@ -100,8 +100,8 @@ const Articles = () => {
 
         <div className="row g-4">
           {sortedArticles.map((article) => (
-            <div className="col-12 col-md-6" key={article.id}>
-              <div className="card h-100 shadow-sm border-0 card-img-top hover-lift reveal">
+            <div className="col-12 col-md-6 reveal" key={article.id}>
+              <div className="card h-100 shadow-sm border-0 card-img-top hover-lift">
                 <img
                   src={article.image}
                   alt={article.title}
